@@ -2,6 +2,8 @@ package rock_paper_scissor_assignment;
 
 import java.util.Scanner;
 
+import rock_paper_scissor_assignment.Choices.roshambo;
+
 public class User extends Player {
 
 	// constructor
@@ -13,14 +15,29 @@ public class User extends Player {
 	// it to user's selection
 	@Override
 	public void takeATurn() {
+		roshambo temp = null;
+		roshambo[] validOptions = roshambo.values();
 		Scanner sc = new Scanner(System.in);
 		String userInput = null;
 		String option = null;
+
+		// get player selection, repeat if necessary until player enters a valid
+		// selection
 		do {
 			printOptions();
 			userInput = sc.nextLine();
 		} while (Validation.isValidSelection(userInput));
-		this.selection = userInput;
+
+		// search array of roshambo choices until one is matched to the user's
+		// input
+		for (int i = 0; i < validOptions.length; i++) {
+			if (userInput.equalsIgnoreCase(validOptions[i].toString())) {
+				temp = validOptions[i];
+			}
+		}
+
+		// set roshambo selection equal to the input string we matched up
+		this.selection = temp;
 	}
 
 	// method to display options user can choose in game

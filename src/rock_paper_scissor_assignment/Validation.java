@@ -1,5 +1,7 @@
 package rock_paper_scissor_assignment;
 
+import rock_paper_scissor_assignment.Choices.roshambo;
+
 public class Validation {
 
 	// method to ensure the user entered an integer and the value is between
@@ -25,10 +27,10 @@ public class Validation {
 	// method to ensure the user entered a valid selection for our game
 	public static boolean isValidSelection(String userInput) {
 		boolean validSelection = true;
-		String[] validOptions = { "rock", "paper", "scissors", "lizard", "spock", "choose", "quit" };
+		roshambo[] validOptions = roshambo.values();
 
 		for (int i = 0; i < validOptions.length; i++) {
-			if (userInput.equalsIgnoreCase(validOptions[i])) {
+			if (userInput.equalsIgnoreCase(validOptions[i].toString())) {
 				validSelection = false;
 			}
 		}

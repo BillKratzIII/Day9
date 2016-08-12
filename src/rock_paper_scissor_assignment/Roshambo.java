@@ -2,6 +2,8 @@ package rock_paper_scissor_assignment;
 
 import java.util.Scanner;
 
+import rock_paper_scissor_assignment.Choices.roshambo;
+
 public class Roshambo {
 
 	public static void main(String[] args) {
@@ -15,14 +17,14 @@ public class Roshambo {
 
 	}
 
-	// mothod to create a user, create a computer player and play rock, paper,
+	// method to create a user, create a computer player and play rock, paper,
 	// scissors until the
 	// user decides to quit.
 	public static void game(String userName) {
 		int opponentChoice = 0;
 		String userInput = null;
-		String userChoice = null;
-		String computerChoice = null;
+		roshambo userChoice = null;
+		roshambo computerChoice = null;
 		String[] opponents = { "Erin", "Mary", "Tucker", "Beth", "John", "Brendan", "Forrest", "Roland", "David",
 				"Chris" };
 
@@ -43,17 +45,22 @@ public class Roshambo {
 			player.takeATurn();
 			computerChoice = player.getSelection();
 
-			if ((user.getSelection().equalsIgnoreCase("choose")) != true
-					&& (user.getSelection().equalsIgnoreCase("quit") != true)) {
-				System.out.println(user.getName() + " chooses " + user.getSelection());
+			if ((user.getSelection() != roshambo.CHOOSE) && (user.getSelection() != (roshambo.QUIT))) { // only
+																										// print
+																										// selections
+																										// while
+																										// game
+				System.out.println(user.getName() + " chooses " + user.getSelection()); // is
+																						// in
+																						// progress
 				System.out.println(player.getName() + " chooses " + player.getSelection());
 			}
 			// call method to compare user and player choices
 			play(userChoice, computerChoice, user.getName());
-		} while (user.getSelection().equalsIgnoreCase("quit") == false);
+		} while (user.getSelection() != roshambo.QUIT);
 	}
 
-	// method to print out list of possible opponenets
+	// method to print out list of possible
 	public static void printList() {
 		System.out.println("1 - Erin");
 		System.out.println("2 - Mary");
@@ -96,23 +103,23 @@ public class Roshambo {
 
 	// method to take in user's choice and the computer player's random choice,
 	// compare them, and display the result
-	public static void play(String userEntry, String computerEntry, String userName) {
-		String key = userEntry.toLowerCase();
-		String key2 = computerEntry.toLowerCase();
+	public static void play(roshambo userChoice, roshambo computerChoice, String userName) {
+		roshambo key = userChoice;
+		roshambo key2 = computerChoice;
 
 		switch (key) {
-		case "rock":
+		case ROCK:
 			switch (key2) {
-			case "paper":
+			case PAPER:
 				System.out.println("You lose, paper beats rock!");
 				break;
-			case "scissors":
+			case SCISSORS:
 				System.out.println("You win, rock beats scissors!");
 				break;
-			case "lizard":
+			case LIZARD:
 				System.out.println("You win, rock beats lizard!");
 				break;
-			case "spock":
+			case SPOCK:
 				System.out.println("You lose, spock beats rock!");
 				break;
 			default:
@@ -120,18 +127,18 @@ public class Roshambo {
 				break;
 			}
 			break;
-		case "paper":
+		case PAPER:
 			switch (key2) {
-			case "rock":
+			case ROCK:
 				System.out.println("You win, paper beats rock!");
 				break;
-			case "scissors":
+			case SCISSORS:
 				System.out.println("You lose, scissors beats paper!");
 				break;
-			case "lizard":
+			case LIZARD:
 				System.out.println("You lose, lizard beats paper!");
 				break;
-			case "spock":
+			case SPOCK:
 				System.out.println("You lose, spock beats paper!");
 				break;
 			default:
@@ -139,18 +146,18 @@ public class Roshambo {
 				break;
 			}
 			break;
-		case "scissors":
+		case SCISSORS:
 			switch (key2) {
-			case "paper":
+			case PAPER:
 				System.out.println("You win, scissors beats paper!");
 				break;
-			case "rock":
+			case ROCK:
 				System.out.println("You lose, rock beats scissors!");
 				break;
-			case "lizard":
+			case LIZARD:
 				System.out.println("You win, scissors beats lizard!");
 				break;
-			case "spock":
+			case SPOCK:
 				System.out.println("You lose, spock beats scissors!");
 				break;
 			default:
@@ -158,18 +165,18 @@ public class Roshambo {
 				break;
 			}
 			break;
-		case "lizard":
+		case LIZARD:
 			switch (key2) {
-			case "rock":
+			case ROCK:
 				System.out.println("You lose, rock beats lizard!");
 				break;
-			case "scissors":
+			case SCISSORS:
 				System.out.println("You lose, scissors beats lizard!");
 				break;
-			case "paper":
+			case PAPER:
 				System.out.println("You win, lizard beats paper!");
 				break;
-			case "spock":
+			case SPOCK:
 				System.out.println("You win, lizard beats spock!");
 				break;
 			default:
@@ -177,18 +184,18 @@ public class Roshambo {
 				break;
 			}
 			break;
-		case "spock":
+		case SPOCK:
 			switch (key2) {
-			case "lizard":
+			case LIZARD:
 				System.out.println("You lose, lizard beats spock!");
 				break;
-			case "scissors":
+			case SCISSORS:
 				System.out.println("You win, spock beats scissors!");
 				break;
-			case "rock":
+			case ROCK:
 				System.out.println("You win, spock beats rock!");
 				break;
-			case "paper":
+			case PAPER:
 				System.out.println("You win, spock beats paper!");
 				break;
 			default:
@@ -196,7 +203,7 @@ public class Roshambo {
 				break;
 			}
 			break;
-		case "choose":
+		case CHOOSE:
 			System.out.println();
 			game(userName);
 			break;

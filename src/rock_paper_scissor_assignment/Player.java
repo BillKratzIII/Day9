@@ -1,8 +1,10 @@
 package rock_paper_scissor_assignment;
 
+import rock_paper_scissor_assignment.Choices.roshambo;
+
 public abstract class Player {
 	String name = null;
-	String selection = null;
+	roshambo selection = null;
 
 	// constructor
 	public Player(String name) {
@@ -24,7 +26,7 @@ public abstract class Player {
 	}
 
 	// method to return the player's selection
-	public String getSelection() {
+	public roshambo getSelection() {
 		return this.selection;
 	}
 

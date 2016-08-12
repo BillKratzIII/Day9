@@ -1,5 +1,7 @@
 package rock_paper_scissor_assignment;
 
+import rock_paper_scissor_assignment.Choices.roshambo;
+
 public class ComputerPlayer extends Player {
 
 	// constructor
@@ -13,19 +15,19 @@ public class ComputerPlayer extends Player {
 		int temp = (int) ((Math.random() * 5) + 1);
 		switch (temp) {
 		case 1:
-			this.selection = "rock";
+			this.selection = roshambo.ROCK;
 			break;
 		case 2:
-			this.selection = "paper";
+			this.selection = roshambo.PAPER;
 			break;
 		case 3:
-			this.selection = "scissors";
+			this.selection = roshambo.SCISSORS;
 			break;
 		case 4:
-			this.selection = "lizard";
+			this.selection = roshambo.LIZARD;
 			break;
 		case 5:
-			this.selection = "spock";
+			this.selection = roshambo.SPOCK;
 			break;
 		}
 
